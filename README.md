@@ -28,3 +28,4 @@ create policy "public insert" on tasks for insert with check (true);
 create policy "public update" on tasks for update using (true) with check (true);
 create policy "public delete" on tasks for delete using (true);
 ```
+Contibution by vistula-team-project-78453
