@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task Manager</title>
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --surface: #fff;
+      --text: #1c2333;
+      --muted: #5d667a;
+      --line: #d9dde6;
+      --accent: #2557d6;
+      --danger: #b42318;
+      --ok: #1a7f4b;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #12151c;
+        --surface: #1b2030;
+        --text: #e8ebf3;
+        --muted: #9aa3b8;
+        --line: #2c3347;
+        --accent: #6d93ff;
+        --danger: #ff8a80;
+        --ok: #5fd39a;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.5 system-ui, sans-serif;
+    }
+
+    main {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+
+    h1 {
+      margin: 0 0 4px;
+      font-size: 1.8rem;
+    }
+
+    #student-id-line {
+      margin: 0 0 24px;
+      color: var(--muted);
+    }
+
+    form,
+    .task-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    form {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    input {
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font: inherit;
+      background: var(--bg);
+      color: inherit;
+    }
+
+    button {
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    #task-submit {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      justify-self: start;
+    }
+
+    #status-message {
+      min-height: 1.5em;
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    #status-message.error {
+      color: var(--danger);
+    }
+
+    #task-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .task-item.done .task-title {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+
+    .task-title {
+      font-weight: 600;
+    }
+
+    .task-description {
+      margin: 2px 0;
+      color: var(--muted);
+    }
+
+    .task-status {
+      font-size: .875rem;
+      color: var(--ok);
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .delete-task {
+      color: var(--danger);
+    }
+
+    footer {
+      margin-top: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Task Manager</h1>
+    <p id="student-id-line">Student ID: <span id="student-id">74294</span></p>
+
+    <form id="task-form">
+      <input id="task-title" type="text" placeholder="Task title" required aria-label="Task title">
+      <input id="task-description" type="text" placeholder="Description (optional)" aria-label="Task description">
+      <button id="task-submit" type="submit">Add task</button>
+    </form>
+
+    <p id="status-message" role="status"></p>
+    <div id="task-list"></div>
+
+    <footer><a id="contribution-link" href="contribution.html">Contribution page</a></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+
+</html>
